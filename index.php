@@ -63,7 +63,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Selecciona "Cerrar Sesion" si estas seguro de salir de tu sesión.</div>
+            <div class="modal-body">Selecciona "Salir" si estas seguro de salir de tu sesión.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <a class="btn btn-primary" href="views/usuario/login.php">Salir</a>
