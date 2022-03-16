@@ -86,7 +86,6 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-
         </div>
 
 
@@ -136,7 +135,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Erika mártinez Mirón</div>
+                                    Erika mártinez Mirón
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">Programación 2</div>
                             </div>
                             <div class="col-auto">
@@ -155,7 +155,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Erika mártinez Mirón</div>
+                                    Erika mártinez Mirón
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">Bases de Datos</div>
                             </div>
                             <div class="col-auto">
@@ -166,17 +167,70 @@
                 </div>
             </div>
             <!-- Fin de Curso-->
-
         </div><!-- Content Row -->
+        <hr>
+        <h1 class="h3 mb-2 text-gray-800">Cursos disponibles en este periodo</h1>
+        <p class="mb-4">Estos son los cursos disponibles en los que te puedes inscribir para este periodo.</p>
+        <div class="card shadow mb-4">
 
-        <div class="row">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Profesor</th>
+                            <th>Fecha</th>
 
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Profesor</th>
+                            <th>Fecha</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr>
+                            <td>Apps Moviles</td>
+                            <td>Erika Mártinez Mirón</td>
+                            <td>2011/04/25</td>
 
+                        </tr>
+                        <tr>
+                            <td>Bases de datos</td>
+                            <td>Erika Mártinez Mirón</td>
+                            <td>2011/07/25</td>
+                        </tr>
+                        <tr>
+                            <td>Proyectos 1+ D</td>
+                            <td>Erika Mártinez Mirón</td>
+                            <td>2009/01/12</td>
+
+                        </tr>
+                        <tr>
+                            <td>Ing. de Software</td>
+                            <td>Erika Mártinez Mirón</td>
+
+                            <td>2012/03/29</td>
+
+                        </tr>
+                        <tr>
+                            <td>Apps Moviles</td>
+                            <td>Erika Mártinez Mirón</td>
+                            <td>2008/11/28</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
 
 
-    </div>
-    <!-- /.container-fluid -->
 
+</div>
+<!-- /.container-fluid -->
 </div>

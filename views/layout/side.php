@@ -1,7 +1,8 @@
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,9 +14,10 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span>
+        </a>
     </li>
 
     <!-- Divider -->
@@ -23,33 +25,13 @@
 
     <!-- Heading -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/views/alumno/cursos.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Mis Cursos</span></a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-    <!-- Heading -->
-
-
-    <!-- Nav Item - Pages Collapse Menu -->
-
-
-    <!-- Nav Item - Charts -->
-
-
-    <!-- Nav Item - Tables -->
-
-
-
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
@@ -57,6 +39,4 @@
     </div>
 
     <!-- Sidebar Message -->
-
-
 </ul>
