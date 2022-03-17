@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+ErrorDocument 404 http://localhost/Coast/error/index
+
+#http://localhost:63342/MasterPHP/proyectoPHPPOOMVC/usuario/save
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^/?([a-zA-Z]+)/([a-zA-Z]+) index.php?controller=$1&action=$2 [QSA]
+
+</IfModule>

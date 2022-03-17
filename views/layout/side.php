@@ -25,7 +25,7 @@
 
     <!-- Heading -->
     <li class="nav-item active">
-        <a class="nav-link" href="../alumno/cursos.php">
+        <a class="nav-link" href="<?=base_url?>/views/alumno/cursos.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Mis Cursos</span></a>
     </li>
@@ -38,6 +38,5 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    <!-- Sidebar Message -->
 </ul>
 <div id="content-wrapper" class="d-flex flex-column">
