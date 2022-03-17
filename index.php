@@ -1,27 +1,27 @@
-<?php require_once 'views/layout/header.php'?>
+<?php require_once 'views/layout/header.php' ?>
+<?php include_once 'views/layout/side.php' ?>
+<?php include_once 'views/layout/nav.php' ?>
+<?php include_once 'views/layout/contenido.php'; ?>
+<?php require_once 'views/layout/footer.php'; ?>
 
-<!-- Page Wrapper -->
-<div id="wrapper">
 
-    <!-- Sidebar -->
-    <?php include_once 'views/layout/side.php' ?>
-    <!-- End of Sidebar -->
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
-        <?php include_once 'views/layout/contenido.php';?>
-        <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <?php require_once 'views/layout/footer.php'; ?>
-        <!-- End of Footer -->
-    </div>
-    <!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">

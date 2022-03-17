@@ -25,7 +25,7 @@
 
     <!-- Heading -->
     <li class="nav-item active">
-        <a class="nav-link" href="/views/alumno/cursos.php">
+        <a class="nav-link" href="../alumno/cursos.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Mis Cursos</span></a>
     </li>
@@ -40,3 +40,4 @@
 
     <!-- Sidebar Message -->
 </ul>
+<div id="content-wrapper" class="d-flex flex-column">

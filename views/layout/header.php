@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -18,8 +17,11 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
-
+    <link href="../../assets/css/sb-admin-2.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
