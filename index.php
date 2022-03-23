@@ -1,61 +1,54 @@
 <?php
 require_once 'autoload.php';
+require 'config/db.php';
 require_once 'config/parameters.php';
-require_once 'views/layout/header.php';
-include_once 'views/layout/side.php';
-include_once 'views/layout/nav.php';
 
-function show_error(){
-    $error = new errorController();
-    $error->index();
-}
 
-if(isset($_GET['controller'])) {//AGARRA EL NOMBRE DEL CONTROLADOR PASADO POR GET
-    $nombrecontrolador = $_GET['controller'].'Controller';//LO CONCATENA PARA NOMBRECONTROLER.CONTROLLER
-    //var_dump($nombrecontrolador);
-    //              //'Usuario'.
-}elseif(isset($_GET['controller']) && !isset($_GET['action'])){//SI EXISTE CONTROLADOR PERO NO ACCION
-    $nombrecontrolador = controller_default;//
-}else{
-    show_error();
-    exit();
-}
-if(class_exists($nombrecontrolador)){
-    $controlador = new $nombrecontrolador();
+///////////////////////////////
+if (!isset($_GET['controller']) && !isset($_GET['action'])) {
+    //MUESTRAME EL LOGIN
+    require 'loguin.php';
+} else {
+    require_once 'views/layout/header.php';
+    include_once 'views/layout/side.php';
+    include_once 'views/layout/nav.php';
 
-    //                                        Objeto, MEtodo
-    if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
-        $action=$_GET['action'];//mandar a llamar el nombre de la accion
-        $controlador->$action();//a controlador le da action(nombreMetodo)
-    }elseif(isset($_GET['controller']) && !isset($_GET['action'])){
-        $action_default=action_default;
-        $controlador->$action_default;
-    }else{
+    $db = Database::connect();
+    function show_error()
+    {
+        $error = new errorController();
+        $error->index();
+    }
+
+    if (isset($_GET['controller'])) {//AGARRA EL NOMBRE DEL CONTROLADOR PASADO POR GET
+        $nombrecontrolador = $_GET['controller'] . 'Controller';//LO CONCATENA PARA NOMBRECONTROLER.CONTROLLER
+        //var_dump($nombrecontrolador);
+        //              //'Usuario'.
+    } elseif (isset($_GET['controller']) && !isset($_GET['action'])) {//SI EXISTE CONTROLADOR PERO NO ACCION
+        $nombrecontrolador = controller_default;//
+    } else {
+        show_error();
+        exit();
+    }
+    if (class_exists($nombrecontrolador)) {
+        $controlador = new $nombrecontrolador();
+
+        //                                        Objeto, MEtodo
+        if (isset($_GET['action']) && method_exists($controlador, $_GET['action'])) {
+            $action = $_GET['action'];//mandar a llamar el nombre de la accion
+            $controlador->$action();//a controlador le da action(nombreMetodo)
+        } elseif (isset($_GET['controller']) && !isset($_GET['action'])) {
+            $action_default = action_default;
+            $controlador->$action_default;
+        } else {
+            show_error();
+        }
+    } else {
         show_error();
     }
-}else{
-    show_error();
+    require_once 'views/layout/footer.php';
 }
-require_once 'views/layout/footer.php';
- ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+?>
 
 
 <!-- Scroll to Top Button-->
