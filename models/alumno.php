@@ -135,5 +135,7 @@ class Alumno{
 //    }
 
 
+    public function perfil(){
 
+    }
 }

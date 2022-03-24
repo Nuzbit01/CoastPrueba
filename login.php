@@ -42,32 +42,37 @@
                                     <h1 class="h4 text-gray-900 mb-4">Bienvenido a CoAsT</h1>
                                 </div>
 
-                                <?php if(!isset($_SESSION['identity'])): ?>
+
                                 <form action="<?=base_url?>usuario/login" method="post" class="user">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                               id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Ingresa tu email..." required>
+                                        <input name="email" type="email" required class="form-control form-control-user"
+                                               id="exampleInputEmail"
+                                               placeholder="Correo...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password" required>
+                                        <input name="password" type="password"
+                                               class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder="Contraseña" required>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Entrar</button>
-
+                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Entrar">
                                 </form>
 
-                                <?php else: ?>
-                                    <h3><?=$_SESSION['identity']->nombre?>
-                                        <?=$_SESSION['identity']->apellidos?></h3>
-                                <?php endif;?>
+
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">¿Olvidaste tu contraseña?</a>
+                                    <a class="medium" href="forgot-password.html">¿Olvidaste tu contraseña?</a>
                                 </div>
-                                <div class="text-center">
-                                    <a class="small" href="register.html">Crear una cuenta</a>
+                                <div class="text-center m-2">
+                                    <h3 class="text-uppercase text-info">¿No tienes cuenta? </span></h3>
+
+                                <div class="row col-auto ">
+                                    <div class="col-6">
+                                        <a href="<?=base_url?>usuario/registroAlumno">Registro Alumno</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="<?=base_url?>usuario/registroProfesor">Registro Profesor</a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>

@@ -14,7 +14,9 @@
                     <div class="col mr-2">
                         <!--                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">-->
                         <!--                                                Análisis y Bases de Datos</div>-->
-                        <div class="h5 mb-0 font-weight-bold text-primary"><?=$curso->nombre?></div>
+                        <div class="h5 mb-0 font-weight-bold text-primary"><?=var_dump($curso)?></div>
+                        <?=$_SESSION['identity']->Email?>
+                        <?=$_SESSION['identity']->Nombres?>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-laptop-code fa-3x"></i>

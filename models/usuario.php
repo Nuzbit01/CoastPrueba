@@ -3,6 +3,7 @@
 class Usuario
 {
     private $id;
+    private $matricula;
     private $nombres;
     private $appaterno;
     private $apmaterno;
@@ -12,145 +13,126 @@ class Usuario
     private $email;
     private $password;
     private $tipo;
+    private $db;
 
     public function __construct()
     {
         $this->db = Database::connect();
     }
 
-    /**
-     * @return mixed
-     */
+   
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
     public function setId($id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
+    
+    public function getMatricula()
+    {
+        return $this->matricula;
+    }
+
+    public function setMatricula($matricula): void
+    {
+        $this->matricula = $matricula;
+    }
+    
+    
     public function getNombres()
     {
         return $this->nombres;
     }
 
-    /**
-     * @param mixed $nombres
-     */
+   
     public function setNombres($nombres): void
     {
         $this->nombres = $nombres;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getAppaterno()
     {
         return $this->appaterno;
     }
 
-    /**
-     * @param mixed $appaterno
-     */
+
     public function setAppaterno($appaterno): void
     {
         $this->appaterno = $appaterno;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getApmaterno()
     {
         return $this->apmaterno;
     }
 
-    /**
-     * @param mixed $apmaterno
-     */
+
     public function setApmaterno($apmaterno): void
     {
         $this->apmaterno = $apmaterno;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getGenero()
     {
         return $this->genero;
     }
 
-    /**
-     * @param mixed $genero
-     */
+
     public function setGenero($genero): void
     {
         $this->genero = $genero;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getFechaNacimiento()
     {
         return $this->fecha_nacimiento;
     }
 
-    /**
-     * @param mixed $fecha_nacimiento
-     */
+
     public function setFechaNacimiento($fecha_nacimiento): void
     {
         $this->fecha_nacimiento = $fecha_nacimiento;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getEstado()
     {
         return $this->estado;
     }
 
-    /**
-     * @param mixed $estado
-     */
+
     public function setEstado($estado): void
     {
         $this->estado = $estado;
     }
 
-    /**
-     * @return mixed
-     */
+    
     public function getEmail()
     {
         return $this->email;
     }
 
 
-    public function setEmail($email): void
+    public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = $this->db->real_escape_string($email);
     }
 
     public function getPassword()
     {
-        return $this->password;
+        return password_hash($this->db->real_escape_string($this->password),PASSWORD_BCRYPT,['cont'=>4]);
     }
 
 
-    public function setPassword($password): void
+    public function setPassword($password)
     {
         $this->password = $password;
     }
@@ -161,37 +143,47 @@ class Usuario
         return $this->tipo;
     }
 
-    /**
-     * @param mixed $tipo
-     */
+
     public function setTipo($tipo): void
     {
         $this->tipo = $tipo;
     }
 
-    public function login(){
+    public function save(){
+        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',null)";
+        $save = $this->db->query($sql);
+        $result=false;
+        if($save){
+            $result= true;
+        }
+        return $result;
+
+            
+    }
+
+    public function login()
+    {
         $result = false;
         $email = $this->email;
         $password = $this->password;
 
         // Comprobar si existe el usuario
-        $sql = "SELECT * FROM usuario WHERE email = '$email'";
+        $sql = "SELECT * FROM usuario WHERE Email = '$email'";
+        var_dump($sql);
         $login = $this->db->query($sql);
 
-
-        if($login && $login->num_rows == 1){
+        if ($login && $login->num_rows == 1) {
             $usuario = $login->fetch_object();
 
             // Verificar la contraseña
-            $verify = password_verify($password, $usuario->password);
+            $verify = password_verify($password, $usuario->Password);
 
-            if($verify){
+
+            if ($verify) {
                 $result = $usuario;
             }
         }
-
         return $result;
     }
-
 
 }

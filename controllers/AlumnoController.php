@@ -15,5 +15,8 @@ class AlumnoController
         require_once 'views/alumno/cursos.php';
     }
 
+    public function perfil(){
+        //vista perfil
+    }
 }
 ?>
