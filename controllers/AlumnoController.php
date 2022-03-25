@@ -17,6 +17,17 @@ class AlumnoController
 
     public function perfil(){
         //vista perfil
+        require 'views/alumno/perfil.php';
+    }
+
+    public function perfiledit(){
+
+        if(isset($_POST)){
+
+        }else{
+
+        }
+
     }
 }
 ?>

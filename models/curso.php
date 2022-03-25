@@ -124,7 +124,7 @@ class Curso{
     }
 
     public function getOnes(){
-        $cursos= $this->db->query("SELECT * FROM inscribecursos where idInscribeCursos = 1 ");
+        $cursos= $this->db->query("SELECT `NombreCurso` from cursos INNER JOIN inscribecursos on `idCursos`= Cursos_idCursos and Alumno_idAlumno = 11;");
         return $cursos;
     }
 }

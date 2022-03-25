@@ -136,6 +136,6 @@ class Alumno{
 
 
     public function perfil(){
-
+        require 'views/alumno/perfil.php';
     }
 }

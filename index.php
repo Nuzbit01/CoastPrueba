@@ -81,7 +81,7 @@ if (!isset($_GET['controller']) && !isset($_GET['action'])) {
                 <div class="modal-body">Selecciona "Salir" si estas seguro de salir de tu sesión.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="views/usuario/login.php">Salir</a>
+                    <a class="btn btn-primary" href="<?=base_url?>">Salir</a>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ class Usuario
     private $estado;
     private $email;
     private $password;
+    private $foto;
     private $tipo;
     private $db;
 
@@ -138,6 +139,18 @@ class Usuario
     }
 
 
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    public function setFoto($foto): void
+    {
+        $this->foto = $foto;
+    }
+
+
+
     public function getTipo()
     {
         return $this->tipo;
@@ -186,4 +199,14 @@ class Usuario
         return $result;
     }
 
+    public function logout(){
+        if(isset($_SESSION['identity'])){
+            session_destroy();
+        }
+        /*if(isset($_SESSION['admin'])){
+            unset($_SESSION['admin']);
+        }*/
+
+        header("Location:".base_url);
+    }
 }

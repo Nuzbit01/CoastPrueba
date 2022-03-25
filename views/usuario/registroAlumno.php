@@ -58,12 +58,11 @@
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Regístrate">
-
                         </form>
                         <hr>
 
                         <div class="text-center">
-                            <a class="small" href="<?=base_url?>">Already have an account? Login!</a>
+                            <a class="small" href="<?=base_url?>">¿Ya tienes una cuenta con nostros? Ingresa</a>
                         </div>
                     </div>
                 </div>

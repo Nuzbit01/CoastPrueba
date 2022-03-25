@@ -12,5 +12,8 @@ class cursoController
         require_once 'views/alumno/cursos.php';
     }
 
+    public function cursosDisponibles(){
+        require 'views/cursos/cursosdisponibles.php';
+    }
 }
 ?>

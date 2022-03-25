@@ -35,7 +35,7 @@ class UsuarioController{
             $_SESSION['register'] = "failed";
             header('Location:'.base_url.'usuario/registroAlumno');
         }
-        header('Location: '.base_url.'usuario/alumno/dashboard');
+        header('Location: '.base_url.'alumno/perfil.php');
     }
 
     public function login(){
