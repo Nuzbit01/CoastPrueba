@@ -37,6 +37,7 @@
                             <h1 class="h4 text-gray-900 mb-4">¡Crea una cuenta!</h1>
                         </div>
                         <form action="<?=base_url?>usuario/save" class="user" method="post">
+                            <input type="hidden" name="tipo" value="2">
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     <input name="matricula"  maxlength="9" required class="form-control form-control-user" id="exampleFirstName"
@@ -48,9 +49,9 @@
                                        placeholder="Correo...">
                             </div>
 
-                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Regístrate">
+                            <input type="submit" class= " mb-2 btn btn-primary btn-user btn-block" value="Regístrate">
                         </form>
-                        <h3 class=" small font-weight-bold text-primary  text-uppercase text-gray-800"> La Contraseña será enviada al correo proporcionado </h3>
+                        <h3 class="small text-center font-weight-bold text-primary  text-uppercase text-gray-800"> La Contraseña será enviada al correo proporcionado </h3>
 
                         <hr>
 

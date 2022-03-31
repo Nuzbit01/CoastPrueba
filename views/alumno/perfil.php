@@ -1,7 +1,7 @@
 <div class="container">
 
-    <div class="card o-hidden border-1 shadow-lg my-4" >
-        <div class="card-body pt-2  " >
+    <div class="card o-hidden border-1 shadow-lg my-4">
+        <div class="card-body pt-2  ">
             <!-- Nested Row within Card Body -->
             <div class="row">
 
@@ -16,52 +16,183 @@
                             <p class="align-baseline small font-weight-bold text-primary text-uppercase text-gray-800">
                                 Estas en el apartado "Perfil", donde podrás actualizar tus datos personales.
                                 Recuerda que la información que proporciones es y será tratada con confidencialidad.</p>
+
                         </div>
                         <hr>
-                        <form action="<?=base_url?>alumno/perfiledit" class="user">
+                        <form action="<?= base_url ?>alumno/perfiledit" class="user" method="post">
+
+                            <input type="hidden" name="idUser"
+                                   value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->idUsuario; ?>">
+
                             <div class="form-group row mb-3">
                                 <div class="col-sm-4  mb-4 mb-sm-5">
-                                    <input name="nombre" required type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           placeholder="Nombres(s)">
+                                    <input name="nombre" required type="text" class="form-control form-control-user"
+                                           id="exampleFirstName"
+                                           placeholder="Nombres(s)"
+                                           value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->Nombres; ?>">
                                 </div>
                                 <div class="col-sm-4 mb-5 mb-sm-5">
-                                    <input name="apaterno" required type="text" class="form-control form-control-user" id="exampleLastName"
-                                           placeholder="Apellido Paterno">
+                                    <input name="aPaterno" required type="text" class="form-control form-control-user"
+                                           id="exampleLastName"
+                                           placeholder="Apellido Paterno"
+                                           value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->ApPaterno; ?>">
                                 </div>
                                 <div class="col-sm-4 mb-3 mb-sm-5">
-                                    <input name="aPaterno" required type="text" class="form-control form-control-user" id="exampleLastName"
-                                           placeholder="Apellido Materno">
+                                    <input name="aMaterno" required type="text" class="form-control form-control-user "
+                                           id="exampleLastName"
+                                           placeholder="Apellido Materno"
+                                           value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->ApMaterno; ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-4 mb-3 mb-sm-5">
-                                    <input name="genero" required type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           placeholder="Genero">
+                                    <select name="genero" class="custom-select form-control " id="inputGroupSelect01"
+                                            required>
+
+                                        <option selected disabled
+                                        >Género
+                                        </option>
+
+                                        <option value="Femenino"
+                                            <?php
+                                            if ($_SESSION) {
+                                                if ($_SESSION['identity']->Genero == 'Femenino') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Femenino
+                                        </option>
+
+                                        <option value="Masculino"
+                                            <?php
+                                            if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->Genero == 'Masculino') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            }
+                                            ?>
+                                        >Masculino
+                                        </option>
+
+                                        <option value="Otro" <?php
+                                        if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->Genero == 'Otro') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>
+                                            Otro
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="col-sm-4 mb-3 mb-sm-5">
+                                    <input name="fecha" required type="date" class="form-control form-control-user"
+                                           placeholder="Fecha de nacimiento"
+                                           value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->FechaNacimiento; ?>">
                                 </div>
                                 <div class="col-sm-4 mb-3 mb-sm-5">
-                                    <input name="fecha" required type="date" class="form-control form-control-user" id="exampleLastName"
-                                           placeholder="Fecha de nacimiento">
-                                </div>
-                                <div class="col-sm-4 mb-3 mb-sm-5">
-                                    <input name="estado" required type="text" class="form-control form-control-user" id="exampleLastName"
-                                           placeholder="Estado de Procedencia">
+                                    <select name="estado" class="form-control" name="estado" required>
+
+                                        <option value="" selected disabled hidden>Estado De Procedencia:</option>
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="CDMX">Ciudad de México</option>
+                                        <option value="Coahuila">Coahuila</option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Estado de México">Estado de México</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="Michoacán">Michoacán</option>
+                                        <option value="Morelos">Morelos</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz">Veracruz</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>
+                                    </select>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-5">
-                                    <input name="carrera" required type="text" minlength=0 maxlength=2 class="form-control form-control-user"
-                                           id="exampleInputPassword" placeholder="Carrera">
+                                    <select class="form-control" name="carrera" required>
+                                        <option
+                                                selected disabled>Carrera:
+                                        </option>
+
+                                        <option value="ICC"
+                                            <?php
+                                            if ($_SESSION['dataAlu']) {
+                                                if ($_SESSION['dataAlu']->Carrera == 'ICC') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>ICC
+                                        </option>
+                                        <option value="LCC"
+                                            <?php
+                                            if ($_SESSION['dataAlu']->Carrera == 'LCC') {
+
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            } ?>>LCC
+                                        </option>
+                                        <option value="ITI"
+                                            <?php
+                                            if ($_SESSION['dataAlu']->Carrera == 'ITI') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            } ?>>ITI
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input name="porcentaje" required type="text" minlength=0 maxlength=2 class="form-control form-control-user"
-                                           id="exampleRepeatPassword" placeholder="Porcentaje">
+                                    <input name="porcentaje" required type="number" min=0 max=100
+                                           class="form-control form-control-user"
+                                           placeholder="Porcentaje"
+                                           value="<?= !isset($_SESSION['dataAlu']) ? '' : $_SESSION['dataAlu']->PorcentajeAvance; ?>">
                                 </div>
+
                             </div>
 
+                            <div class="form-group row mb-3">
+                                <div class="col-sm-4  mb-4 mb-sm-5">
+                                    <input class="form-control form-control-user" id="disabledInput" type="text"
+                                           disabled
+                                           value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->Email; ?>">
+                                </div>
+                            </div>
                             <div class="col-sm-5 mb-4 mb-sm-1 pb-4">
                                 <label for="formFile" class="form-label">Selecciona una imagen de perfil:</label>
-                                <input  type="file" id="formFile">
+                                <input name="foto" type="file" id="formFile">
                             </div>
                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Completar Registro">
 

@@ -2,7 +2,7 @@
 
 class Usuario
 {
-    private $id;
+    private $idUsuario;
     private $matricula;
     private $nombres;
     private $appaterno;
@@ -21,16 +21,24 @@ class Usuario
         $this->db = Database::connect();
     }
 
-   
-    public function getId()
+    /**
+     * @return mixed
+     */
+    public function getIdUsuario()
     {
-        return $this->id;
+        return $this->idUsuario;
     }
 
-    public function setId($id): void
+    /**
+     * @param mixed $idUsuario
+     */
+    public function setIdUsuario($idUsuario): void
     {
-        $this->id = $id;
+        $this->idUsuario = $idUsuario;
     }
+
+   
+
 
     
     public function getMatricula()
@@ -162,9 +170,11 @@ class Usuario
         $this->tipo = $tipo;
     }
 
+
     public function save(){
-        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',null)";
+        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',{$this->getTipo()},null)";
         $save = $this->db->query($sql);
+        var_dump($sql);
         $result=false;
         if($save){
             $result= true;
@@ -182,7 +192,7 @@ class Usuario
 
         // Comprobar si existe el usuario
         $sql = "SELECT * FROM usuario WHERE Email = '$email'";
-        var_dump($sql);
+        //var_dump($sql);
         $login = $this->db->query($sql);
 
         if ($login && $login->num_rows == 1) {
@@ -198,15 +208,29 @@ class Usuario
         }
         return $result;
     }
+    public function getOne(){
+        $alumno= $this->db->query("SELECT * FROM usuario WHERE idUsuario={$this->getIdUsuario()}");
+        return $alumno->fetch_object();
 
-    public function logout(){
-        if(isset($_SESSION['identity'])){
-            session_destroy();
+    }
+
+    public function perfiledit(){
+        /******CONSULTA PARA EDITAR DATOS EN LA TABLA USUARIO********/
+        $sql="UPDATE usuario SET Nombres='{$this->getNombres()}',
+                   ApPaterno='{$this->getAppaterno()}',
+                   ApMaterno='{$this->getApmaterno()}', 
+                   Genero='{$this->getGenero()}',
+                   FechaNacimiento='{$this->getFechaNacimiento()}',
+            EstadoProcedencia='{$this->getEstado()}' WHERE idUsuario={$this->idUsuario}";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
         }
-        /*if(isset($_SESSION['admin'])){
-            unset($_SESSION['admin']);
-        }*/
-
-        header("Location:".base_url);
+        return $result;
     }
 }
+
+

@@ -1,141 +1,124 @@
 <?php
-class Alumno{
-    private $idUsuario;
-    private $nombres;
-    private $apPaterno;
-    private $apMaterno;
-    private $genero;
-    private $fechaNacimiento;
-    private $estadoProcedencia;
-    private $email;
-    private $password;
-    private $tipouser;
-    private $db;
 
-    public function __construct(){
-        $this->db= Database::connect();
-    }
+class Alumno
+{
+    private $idAlumno;
+    private $carrera;
+    private $porcentaje;
+    private $fk_Usuario_idUsuario;
 
-    
-    public function getIdUsuario()
+    public function __construct()
     {
-        return $this->idUsuario;
-    }
-    
-    public function setIdUsuario($idUsuario): void
-    {
-        $this->idUsuario = $idUsuario;
+        $this->db = Database::connect();
     }
 
-   
-    public function getNombres()
+    /**
+     * @return mixed
+     */
+    public function getIdAlumno()
     {
-        return $this->nombres;
-    }
-    
-    public function setNombres($nombres): void
-    {
-        $this->nombres = $nombres;
+        return $this->idAlumno;
     }
 
-    
-    public function getApPaterno()
+    /**
+     * @param mixed $idAlumno
+     */
+    public function setIdAlumno($idAlumno): void
     {
-        return $this->apPaterno;
-    }
-    
-    public function setApPaterno($apPaterno): void
-    {
-        $this->apPaterno = $apPaterno;
-    }
-
-    
-    public function getApMaterno()
-    {
-        return $this->apMaterno;
-    }
-    
-    public function setApMaterno($apMaterno): void
-    {
-        $this->apMaterno = $apMaterno;
-    }
-
-    
-    public function getGenero()
-    {
-        return $this->genero;
-    }
-    
-    public function setGenero($genero): void
-    {
-        $this->genero = $genero;
-    }
-
-    
-    public function getFechaNacimiento()
-    {
-        return $this->fechaNacimiento;
-    }
-    
-    public function setFechaNacimiento($fechaNacimiento): void
-    {
-        $this->fechaNacimiento = $fechaNacimiento;
-    }
-
-    
-    public function getEstadoProcedencia()
-    {
-        return $this->estadoProcedencia;
-    }
-
-    
-    public function setEstadoProcedencia($estadoProcedencia): void
-    {
-        $this->estadoProcedencia = $estadoProcedencia;
-    }
-
-     
-    public function getEmail()
-    {
-        return $this->email;
+        $this->idAlumno = $idAlumno;
     }
 
 
-    public function setEmail($email): void
+
+
+    public function getCarrera()
     {
-        $this->email = $email;
+        return $this->carrera;
     }
 
-
-    public function getPassword()
+    /**
+     * @param mixed $carrera
+     */
+    public function setCarrera($carrera): void
     {
-        return $this->password;
+        $this->carrera = $carrera;
     }
 
-
-    public function setPassword($password): void
+    /**
+     * @return mixed
+     */
+    public function getPorcentaje()
     {
-        $this->password = $password;
+        return $this->porcentaje;
     }
 
-
-    public function getTipouser()
+    /**
+     * @param mixed $porcentaje
+     */
+    public function setPorcentaje($porcentaje): void
     {
-        return $this->tipouser;
+        $this->porcentaje = $porcentaje;
     }
 
-    public function setTipouser($tipouser): void
+
+    public function getFkUsuarioIdUsuario()
     {
-        $this->tipouser = $tipouser;
+        return $this->fk_Usuario_idUsuario;
     }
-//
-//    public function getOnes(){
-//        $cursos= $this->db->query("SELECT * FROM inscribecursos where idInscribeCursos = 1 ");
-//        return $cursos;
-//    }
 
 
-    public function perfil(){
-        require 'views/alumno/perfil.php';
+    public function setFkUsuarioIdUsuario($fk_Usuario_idUsuario): void
+    {
+        $this->fk_Usuario_idUsuario = $fk_Usuario_idUsuario;
     }
+
+
+    public function getOneAl(){
+        $alumno= $this->db->query("SELECT * FROM alumno WHERE fk_Usuario_idUsuario={$this->getFkUsuarioIdUsuario()}");
+        return $alumno->fetch_object();
+    }
+
+
+    public function insertalumno(){
+        /******CONSULTA PARA  o EDITAR DATOS EN LA TABLA ALUMNO********/
+        $sql="INSERT INTO alumno  VALUES (null,{$this->getPorcentaje()},'{$this->getCarrera()}',{$this->getFkUsuarioIdUsuario()})";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function insertalumnoreg(){
+        /******CONSULTA PARA  o EDITAR DATOS EN LA TABLA ALUMNO********/
+        $sql="INSERT INTO alumno  VALUES (null,null,null,{$this->getFkUsuarioIdUsuario()})";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function editalumno(){
+        /******CONSULTA PARA  o EDITAR DATOS EN LA TABLA ALUMNO********/
+        $sql="UPDATE alumno SET PorcentajeAvance='{$this->getPorcentaje()}',
+                   Carrera='{$this->getCarrera()}' WHERE fk_Usuario_idUsuario={$this->fk_Usuario_idUsuario}";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
+
+
 }

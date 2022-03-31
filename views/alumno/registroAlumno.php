@@ -37,6 +37,7 @@
                             <h1 class="h4 text-gray-900 mb-4">¡Crea una cuenta!</h1>
                         </div>
                         <form action="<?=base_url?>usuario/save" class="user" method="post">
+                            <input type="hidden" name="tipo" value="3">
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     <input name="matricula"  maxlength="9" required class="form-control form-control-user" id="exampleFirstName"

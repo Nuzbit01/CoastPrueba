@@ -1,27 +1,17 @@
 <?php
 require 'models/usuario.php';
-require_once 'models/alumno.php';
-require 'models/curso.php';
-
-class AlumnoController
+require 'models/profesor.php';
+class ProfesorController
 {
     public function dashboard()
     {
-        $curso = new Curso();
-        $cursos = $curso->getOnes();
 
-        require_once 'views/alumno/misCursos.php';
+        require_once 'views/profesor/dashboard.php';
     }
-
-    public function Cursos()
-    {
-        require_once 'views/alumno/cursos.php';
-    }
-
     public function perfil()
     {
         //vista perfil
-        require 'views/alumno/perfil.php';
+        require 'views/profesor/perfil.php';
     }
 
     public function perfiledit()
@@ -30,6 +20,7 @@ class AlumnoController
         if (isset($_POST)) {
             //todas mi variables de formulario
             $id = ($_POST['idUser']);
+            $tipo=$_POST['tipo'];
             $edit = true;
 
             $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
@@ -39,12 +30,7 @@ class AlumnoController
             $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : false;
             $estado = isset($_POST['estado']) ? $_POST['estado'] : false;
 
-            $porcentaje = isset($_POST['porcentaje']) ? $_POST['porcentaje'] :false;
-            $carrera = isset($_POST['carrera']) ? $_POST['carrera'] :false;
-
-            //Crear para passwprd y email
-            //$email=isset($_POST['email'])
-
+            $grado = isset($_POST['grado']) ? $_POST['grado'] :false;
 
 
             $usuario = new Usuario();
@@ -59,40 +45,49 @@ class AlumnoController
 
             $user = $usuario->perfiledit();
 
-            $alumno = new Alumno();
-            $alumno->setFkUsuarioIdUsuario($id);
-            $alumno->setPorcentaje($porcentaje);
-            $alumno->setCarrera($carrera);
-            $alu=$alumno->editalumno();
-
-            //var_dump($user);
+            $profesor = new Profesor();
+            $profesor->setFkUsuarioIdUsuario($id);
+            $profesor->setGradoEstudios($grado);
+            $pro=$profesor->editaprofesor();
 
             if ($user) {
-                //$newusuario = new Usuario();
-                //$newusuario->setEmail($_SESSION['identity']->Email);
-                //$newal= new Alumno();
-                //var_dump($usuario);
-
                 //Creo una variable donde se guarda los registros solicitados al modelo(datos del usuario(tal y como esta eb bd))
                 $identity = $usuario->getOne();
-                $identityAl= $alumno->getOneAl();
+                $identityPr= $profesor->getOnePr();
                 //Si existe y es un objeto la var identity
                 if ($identity && is_object($identity)) {
                     //creame una variable de sesion que sirve para compartir datos sin crear variables get/post
                     unset($_SESSION['identity']);
                     $_SESSION['identity'] = $identity;
-                    $_SESSION['dataAlu']=$identityAl;
+                    $_SESSION['dataPro']=$identityPr;
                 }
-                header('Location: ' . base_url . 'alumno/perfil');
+                header('Location: ' . base_url . 'profesor/perfil');
 
             } else {//fin de: si llegan por post
-                header('Location: ' . base_url . 'alumno/perfil');
+                header('Location: ' . base_url . 'profesor/perfil');
             }
 
         }
     }
 
 
-}//llaveClase
 
-?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
