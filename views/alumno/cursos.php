@@ -5,7 +5,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table id="example" class="table table-striped" style="width:100%">
                 <thead>
                 <tr>
                     <th>Nombre</th>

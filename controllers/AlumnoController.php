@@ -29,7 +29,9 @@ class AlumnoController
 
         if (isset($_POST)) {
             //todas mi variables de formulario
+
             $id = ($_POST['idUser']);
+            $tipo=$_POST['tipo'];
             $edit = true;
 
             $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
@@ -42,11 +44,6 @@ class AlumnoController
             $porcentaje = isset($_POST['porcentaje']) ? $_POST['porcentaje'] :false;
             $carrera = isset($_POST['carrera']) ? $_POST['carrera'] :false;
 
-            //Crear para passwprd y email
-            //$email=isset($_POST['email'])
-
-
-
             $usuario = new Usuario();
             $usuario->setIdUsuario($id);
 
@@ -56,8 +53,10 @@ class AlumnoController
             $usuario->setGenero($genero);
             $usuario->setFechaNacimiento($fecha);
             $usuario->setEstado($estado);
+            $usuario->setTipo($tipo);
 
             $user = $usuario->perfiledit();
+
 
             $alumno = new Alumno();
             $alumno->setFkUsuarioIdUsuario($id);

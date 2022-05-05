@@ -24,15 +24,42 @@
                             <input type="hidden" name="idUser"
                                    value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->idUsuario; ?>">
                             <input type="hidden" name="tipo" value="2">
+                            
 
                             <div class="form-group row mb-3">
                                 <div class="col-sm-4  mb-3 mb-sm-2">
+
+
                                     <select name="grado" class="custom-select form-control " id="inputGroupSelect01"
                                             required>
-                                        <option value="" selected disabled hidden>Grado de estudios: </option>
-                                        <option>Licenciatura</option>
-                                        <option>Maestría</option>
-                                        <option>Doctorado</option>
+                                        <option value="" selected disabled hidden>Grado de estudios:</option>
+                                        <option value="Licenciatura"<?php
+                                        if ($_SESSION['dataPro']) {
+                                            if ($_SESSION['dataPro']->GradoEstudios == 'Licenciatura') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Licenciatura
+                                        </option>
+                                        <option value="Maestría"<?php
+                                        if ($_SESSION['identity']) {
+                                            if ($_SESSION['dataPro']->GradoEstudios == 'Maestría') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Maestría
+                                        </option>
+                                        <option value="Doctorado"<?php
+                                        if ($_SESSION) {
+                                            if ($_SESSION['dataPro']->GradoEstudios == 'Doctorado') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Doctorado
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -60,41 +87,44 @@
                             <div class="form-group row">
                                 <div class="col-sm-4 mb-3 mb-sm-5">
                                     <select name="genero" class="custom-select form-control " id="inputGroupSelect01"
-                                            required >
+                                            required>
 
                                         <option selected disabled
-                                        >Género</option>
+                                        >Género
+                                        </option>
 
                                         <option value="Femenino"
                                             <?php
-                                            if($_SESSION) {
+                                            if ($_SESSION) {
                                                 if ($_SESSION['identity']->Genero == 'Femenino') {
                                                     echo 'selected';
                                                 } else {
                                                     echo '';
                                                 }
-                                            }?>>Femenino
+                                            } ?>>Femenino
                                         </option>
 
                                         <option value="Masculino"
                                             <?php
-                                            if($_SESSION['identity']) {
-                                                if($_SESSION['identity']->Genero == 'Masculino'){
+                                            if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->Genero == 'Masculino') {
                                                     echo 'selected';
-                                                }else{
+                                                } else {
                                                     echo '';
-                                                }}
+                                                }
+                                            }
                                             ?>
                                         >Masculino
                                         </option>
 
                                         <option value="Otro" <?php
-                                        if($_SESSION['identity']) {
-                                            if($_SESSION['identity']->Genero == 'Otro'){
+                                        if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->Genero == 'Otro') {
                                                 echo 'selected';
-                                            }else{
+                                            } else {
                                                 echo '';
-                                            }}?>>
+                                            }
+                                        } ?>>
                                             Otro
                                         </option>
 
@@ -108,46 +138,278 @@
                                            value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->FechaNacimiento; ?>">
                                 </div>
                                 <div class="col-sm-4 mb-3 mb-sm-5">
+
                                     <select name="estado" class="form-control" name="estado" required>
 
                                         <option value="" selected disabled hidden>Estado De Procedencia:</option>
-                                        <option value="Aguascalientes">Aguascalientes</option>
-                                        <option value="Baja California">Baja California</option>
-                                        <option value="Baja California Sur">Baja California Sur</option>
-                                        <option value="Campeche">Campeche</option>
-                                        <option value="Chiapas">Chiapas</option>
-                                        <option value="Chihuahua">Chihuahua</option>
-                                        <option value="CDMX">Ciudad de México</option>
-                                        <option value="Coahuila">Coahuila</option>
-                                        <option value="Colima">Colima</option>
-                                        <option value="Durango">Durango</option>
-                                        <option value="Estado de México">Estado de México</option>
-                                        <option value="Guanajuato">Guanajuato</option>
-                                        <option value="Guerrero">Guerrero</option>
-                                        <option value="Hidalgo">Hidalgo</option>
-                                        <option value="Jalisco">Jalisco</option>
-                                        <option value="Michoacán">Michoacán</option>
-                                        <option value="Morelos">Morelos</option>
-                                        <option value="Nayarit">Nayarit</option>
-                                        <option value="Nuevo León">Nuevo León</option>
-                                        <option value="Oaxaca">Oaxaca</option>
-                                        <option value="Puebla">Puebla</option>
-                                        <option value="Querétaro">Querétaro</option>
-                                        <option value="Quintana Roo">Quintana Roo</option>
-                                        <option value="San Luis Potosí">San Luis Potosí</option>
-                                        <option value="Sinaloa">Sinaloa</option>
-                                        <option value="Sonora">Sonora</option>
-                                        <option value="Tabasco">Tabasco</option>
-                                        <option value="Tamaulipas">Tamaulipas</option>
-                                        <option value="Tlaxcala">Tlaxcala</option>
-                                        <option value="Veracruz">Veracruz</option>
-                                        <option value="Yucatán">Yucatán</option>
-                                        <option value="Zacatecas">Zacatecas</option>
+                                        <option value="Aguascalientes" <?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Aguascalientes') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Aguascalientes
+                                        </option>
+                                        <option value="Baja California"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Baja California') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Baja California
+                                        </option>
+                                        <option value="Baja California Sur"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Baja California Sur') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Baja California Sur
+                                        </option>
+                                        <option value="Campeche"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Campeche') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Campeche
+                                        </option>
+                                        <option value="Chiapas"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Chiapas') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Chiapas
+                                        </option>
+                                        <option value="Chihuahua"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Chihuahua') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Chihuahua
+                                        </option>
+                                        <option value="CDMX"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Ciudad de México') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Ciudad de México
+                                        </option>
+                                        <option value="Coahuila"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Coahuila') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Coahuila
+                                        </option>
+                                        <option value="Colima"
+                                            <?php if ($_SESSION['identity']) {
+                                                if ($_SESSION['identity']->EstadoProcedencia == 'Colima') {
+                                                    echo 'selected';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            } ?>>Colima
+                                        </option>
+                                        <option value="Durango"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Durango') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Durango
+                                        </option>
+                                        <option value="Estado de México"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Estado de México') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Estado de México
+                                        </option>
+                                        <option value="Guanajuato"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Guanajuato') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Guanajuato
+                                        </option>
+                                        <option value="Guerrero"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Guerrero') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Guerrero
+                                        </option>
+                                        <option value="Hidalgo"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Hidalgo') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Hidalgo
+                                        </option>
+                                        <option value="Jalisco" <?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Jalisco') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Jalisco
+                                        </option>
+                                        <option value="Michoacán"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Michoacán') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Michoacán
+                                        </option>
+                                        <option value="Morelos"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Morelos') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Morelos
+                                        </option>
+                                        <option value="Nayarit"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Nayarit') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Nayarit
+                                        </option>
+                                        <option value="Nuevo León"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Nuevo León') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Nuevo León
+                                        </option>
+                                        <option value="Oaxaca"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Oaxaca') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Oaxaca
+                                        </option>
+                                        <option value="Puebla"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Puebla') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Puebla
+                                        </option>
+                                        <option value="Querétaro"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Querétaro') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Querétaro
+                                        </option>
+                                        <option value="Quintana Roo"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Quintana Roo') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Quintana Roo
+                                        </option>
+                                        <option value="San Luis Potosí"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'San Luis Potosí') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>San Luis Potosí
+                                        </option>
+                                        <option value="Sinaloa"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Sinaloa') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Sinaloa
+                                        </option>
+                                        <option value="Sonora"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Sonora') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Sonora
+                                        </option>
+                                        <option value="Tabasco"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Tabasco') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Tabasco
+                                        </option>
+                                        <option value="Tamaulipas"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Tamaulipas') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Tamaulipas
+                                        </option>
+                                        <option value="Tlaxcala"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Tlaxcala') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Tlaxcala
+                                        </option>
+                                        <option value="Veracruz"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Veracruz') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Veracruz
+                                        </option>
+                                        <option value="Yucatán"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Yucatán') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Yucatán
+                                        </option>
+                                        <option value="Zacatecas"<?php if ($_SESSION['identity']) {
+                                            if ($_SESSION['identity']->EstadoProcedencia == 'Zacatecas') {
+                                                echo 'selected';
+                                            } else {
+                                                echo '';
+                                            }
+                                        } ?>>Zacatecas
+                                        </option>
                                     </select>
 
                                 </div>
                             </div>
-
 
 
                             <div class="form-group row mb-3">
@@ -157,6 +419,7 @@
                                            value="<?= !isset($_SESSION['identity']) ? '' : $_SESSION['identity']->Email; ?>">
                                 </div>
                             </div>
+
                             <div class="col-sm-5 mb-4 mb-sm-1 pb-4">
                                 <label for="formFile" class="form-label">Selecciona una imagen de perfil:</label>
                                 <input name="foto" type="file" id="formFile">

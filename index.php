@@ -29,7 +29,7 @@ if (!isset($_GET['controller']) && !isset($_GET['action'])) {
     {
         //$error = new errorController();
         //$error->index();
-        header('Location: '.base_url);
+        header('Location: ' . base_url);
     }
 
     if (isset($_GET['controller'])) {//AGARRA EL NOMBRE DEL CONTROLADOR PASADO POR GET
@@ -91,7 +91,89 @@ if (!isset($_GET['controller']) && !isset($_GET['action'])) {
     </div>
 </div>
 
-<?php
-ob_end_flush();
-?>
+
+<!-- Logout Modal-->
+<!-- Button trigger modal -->
+
+
+<!-- Modal Periodo-->
+<div class="modal fade" id="addPeriodo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Agregar Periodo</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--BodyMODAL-->
+                <form method="post" action="<?= base_url ?>admin/addPeriodo">
+                    <label>Nombre del Periodo:</label>
+                    <input name="periodo" required class="form-control form-control-user"
+                           id="exampleFirstName"
+                           placeholder="Ej: Otoño 2022">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Close">Cancelar
+                </button>
+                <input type="submit" class="btn btn-success" value="Agregar">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Profesor-->
+<div class="modal fade" id="addProfesor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Agregar Profesor</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--BodyMODAL-->
+                <form method="post" action="<?=base_url?>admin/addProfesor" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="nombre" class="form-label">Nombre(s):</label>
+                        <input type="text" name="nombre" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="appPaterno" class="form-label">Apellido Paterno:</label>
+                        <input type="text" name="appPaterno" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="appMaterno" class="form-label">Apellido Materno:</label>
+                        <input type="text" name="appMaterno" class="form-control" id="inputPassword4">
+                    </div>
+
+                    <div class="col-12 mt-2">
+                        <label for="email" class="form-label">E-mail:</label>
+                        <input type="email" name="email" class="form-control" id="inputAddress" placeholder="">
+                    </div>
+                    <div class="col-12 mt-2">
+                        <h6 class=" card shadow mb-4 border-left-danger" style="text-align: center; color:#0c0c0c">LA
+                            CONTRASEÑA DEL PROFESOR SERÁ ENVIADA AL CORREO CON EL QUE FUE REGISTRADO</h6>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Close">Cancelar
+                </button>
+                <input type="submit" class="btn btn-success" value="Agregar">
+            </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <?php
+    ob_end_flush();
+    ?>
 

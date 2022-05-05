@@ -34,4 +34,16 @@
 <script src="<?=base_url?>js/demo/chart-area-demo.js"></script>
 <script src="<?=base_url?>js/demo/chart-pie-demo.js"></script>
 
+<script src="<?=base_url?>/assets/DataTables/DataTables-1.11.5/js/dataTables.bootstrap5.js"></script>
+<script src="<?=base_url?>/assets/DataTables/datatables.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="<?=base_url?>/assets/DataTables/DataTables-1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url?>/assets/DataTables/DataTables-1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+
 </html>

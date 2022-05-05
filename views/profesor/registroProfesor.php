@@ -56,7 +56,7 @@
                         <hr>
 
                         <div class="text-center">
-                            <a class="small" href="<?=base_url?>">¿Ya tienes una cuenta con nostros? Ingresa</a>
+                            <a class="small" href="<?=base_url?>">¿Ya tienes una cuenta con nosotros? Ingresa</a>
                         </div>
                     </div>
                 </div>

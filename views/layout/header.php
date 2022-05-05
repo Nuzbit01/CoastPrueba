@@ -18,6 +18,12 @@
 
     <!-- Custom styles for this template-->
     <link href="<?=base_url?>/assets/css/sb-admin-2.css" rel="stylesheet">
+
+    <!--DATA TABLES -->
+
+    <link href="<?=base_url?>/assets/DataTables/DataTables-1.11.5/css/dataTables.bootstrap5.css" rel="stylesheet">
+    <link href="<?=base_url?>/assets/DataTables/DataTables-1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?=base_url?>/assets/DataTables/DataTables-1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

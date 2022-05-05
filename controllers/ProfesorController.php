@@ -30,7 +30,9 @@ class ProfesorController
             $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : false;
             $estado = isset($_POST['estado']) ? $_POST['estado'] : false;
 
+            /****SUBIDA DE ARCHIVO******/
             $grado = isset($_POST['grado']) ? $_POST['grado'] :false;
+
 
 
             $usuario = new Usuario();
@@ -43,6 +45,21 @@ class ProfesorController
             $usuario->setFechaNacimiento($fecha);
             $usuario->setEstado($estado);
 
+            $file=$_FILES['foto'];
+            $filename=$file['name'];
+            $mimetype=$file['type'];
+
+            if($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype=='image/png' || $mimetype== 'image/gif'){
+
+                if(!is_dir('uploads/images')){
+                    mkdir('uploads',0777,true);
+                }
+                $usuario->setFoto($filename);
+                //$producto->setImagen($filename);
+                move_uploaded_file($file['tmp_name'], 'uploads/images'.$filename);
+
+            }
+            var_dump($_POST);
             $user = $usuario->perfiledit();
 
             $profesor = new Profesor();
@@ -69,24 +86,6 @@ class ProfesorController
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

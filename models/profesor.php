@@ -46,7 +46,7 @@ class Profesor{
     }
 
     public function editaprofesor(){
-        /******CONSULTA PARA  o EDITAR DATOS EN LA TABLA ALUMNO********/
+
         $sql="UPDATE profesor SET GradoEstudios='{$this->getGradoEstudios()}'
                 WHERE fk_Usuario_idUsuario={$this->fk_Usuario_idUsuario}";
 
@@ -58,6 +58,8 @@ class Profesor{
         }
         return $result;
     }
+
+
     public function getOnePr(){
         $profesor= $this->db->query("SELECT * FROM profesor WHERE fk_Usuario_idUsuario={$this->getFkUsuarioIdUsuario()}");
         return $profesor->fetch_object();

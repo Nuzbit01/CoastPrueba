@@ -172,7 +172,7 @@ class Usuario
 
 
     public function save(){
-        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',{$this->getTipo()},null)";
+        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',null,'{$this->getTipo()}')";
         $save = $this->db->query($sql);
         var_dump($sql);
         $result=false;
@@ -221,7 +221,9 @@ class Usuario
                    ApMaterno='{$this->getApmaterno()}', 
                    Genero='{$this->getGenero()}',
                    FechaNacimiento='{$this->getFechaNacimiento()}',
-            EstadoProcedencia='{$this->getEstado()}' WHERE idUsuario={$this->idUsuario}";
+            EstadoProcedencia='{$this->getEstado()}'
+                   
+                    WHERE idUsuario={$this->idUsuario}";
 
         $save = $this->db->query($sql);
 

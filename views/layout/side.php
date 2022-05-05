@@ -13,17 +13,19 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+<!--    BOTONES DE ALUMNO-->
     <li class="nav-item active">
         <a class="nav-link" href="<?=base_url?>alumno/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
     <li class="nav-item active">
         <a class="nav-link" href="<?=base_url?>curso/cursosDisponibles">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -34,7 +36,29 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Mis Cursos</span></a>
     </li>
+    <!--  FIN BOTONES DE ALUMNO-->
 
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!--    BOTONES DE ADMINISTRADOR-->
+    <li class="nav-item active">
+        <a class="nav-link" href="<?=base_url?>admin/dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard Adm</span>
+        </a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="<?=base_url?>admin/periodos">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Periodos</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="<?=base_url?>admin/bitacora">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Bitacora</span></a>
+    </li>
+    <!--    FIN BOTONES DE ADMIN-->
 
     <!-- Divider -->
     <hr class="sidebar-divider">
