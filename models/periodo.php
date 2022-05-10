@@ -53,5 +53,11 @@ class Periodo{
         return $total;
      }
 
+     public function delete(){
+         $sql= "DELETE FROM periodo WHERE idPeriodo = {$this->idPeriodo}";
+         $delete= $this->db->query($sql);
+
+         return $delete;
+     }
 
 }

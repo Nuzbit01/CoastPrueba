@@ -16,13 +16,14 @@ class UsuarioController
         require_once 'views/profesor/registroprofesor.php';
     }
 
-    public function perfil(){
-        if($_SESSION['identity']->Tipo == 3){
+    public function perfil()
+    {
+        if ($_SESSION['identity']->Tipo == 3) {
             require 'views/alumno/perfil.php';
 
-        }elseif ($_SESSION['identity']->Tipo == 2){
+        } elseif ($_SESSION['identity']->Tipo == 2) {
             require 'views/profesor/perfil.php';
-        }elseif ($_SESSION['identity']->Tipo == 1){
+        } elseif ($_SESSION['identity']->Tipo == 1) {
             require 'views/admin/perfil.php';
         }
     }
@@ -69,7 +70,7 @@ class UsuarioController
                         }
                         //redirige a dashbooard en caso de exito
                         header('Location: ' . base_url . 'alumno/perfil');
-                    } else{
+                    } else {
                         $profesor = new Profesor();
                         $profesor->setFkUsuarioIdUsuario($identity->idUsuario);
                         $ProfesorRegistro = $profesor->insertaprofesor();
@@ -110,7 +111,7 @@ class UsuarioController
             $usuario = new Usuario();
             $alumno = new Alumno();
             $profesor = new Profesor();
-            $admin= new Admin();
+            $admin = new Admin();
 
             $usuario->setEmail($_POST['email']);
             $usuario->setPassword($_POST['password']);
@@ -146,7 +147,7 @@ class UsuarioController
                     }
                     //redirige a dashbooard en caso de exito
                     header('Location: ' . base_url . 'profesor/dashboard');
-                }elseif ($_SESSION['identity']->Tipo == 1){
+                } elseif ($_SESSION['identity']->Tipo == 1) {
                     $admin->setFkUsuarioIdUsuario($identity->idUsuario);
                     $identityAdm = $admin->getOneAdm();
 
@@ -155,7 +156,7 @@ class UsuarioController
                         /*var_dump($_SESSION['dataAdm']);
                         die();*/
                     }
-                    $insertbit= $admin->insertAdminBitacora("Inició Sesión");
+                    $insertbit = $admin->insertAdminBitacora("Inició Sesión");
 
                     //redirige a dashbooard en caso de exito
                     header('Location: ' . base_url . 'admin/dashboard');

@@ -172,16 +172,41 @@ class Usuario
 
 
     public function save(){
-        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',null,'{$this->getTipo()}')";
+        $sql= "INSERT INTO usuario VALUES(null,'{$this->getMatricula()}',null,null,null,null,null,null,'{$this->getEmail()}','{$this->getPassword()}',null,'{$this->getTipo()}',1)";
         $save = $this->db->query($sql);
-        var_dump($sql);
+        //var_dump($sql);
         $result=false;
         if($save){
             $result= true;
         }
         return $result;
+    }
 
-            
+    public function altaProfesor(){
+        $sql= "INSERT INTO usuario VALUES(null,null,'{$this->getNombres()}','{$this->getAppaterno()}','{$this->getApmaterno()}',null,null,null,'{$this->getEmail()}',null,null,'{$this->getTipo()}',1)";
+        $save = $this->db->query($sql);
+        //var_dump($sql);
+        $result=false;
+        if($save){
+            $result= true;
+        }
+        return $result;
+    }
+
+    public function obtenerProfesor()
+    {
+        $email = $this->email;
+
+
+        // Comprobar si existe el usuario
+        $sql = "SELECT * FROM usuario WHERE Email = '$email'";
+        //var_dump($sql);
+        $profe = $this->db->query($sql);
+        $data=$profe->fetch_object();
+        $idPro=$data->idUsuario;
+        return $idPro;
+
+
     }
 
     public function login()
@@ -208,10 +233,10 @@ class Usuario
         }
         return $result;
     }
+
     public function getOne(){
         $alumno= $this->db->query("SELECT * FROM usuario WHERE idUsuario={$this->getIdUsuario()}");
         return $alumno->fetch_object();
-
     }
 
     public function perfiledit(){
@@ -233,6 +258,38 @@ class Usuario
         }
         return $result;
     }
+    /*************CONSULTAS PARA ADMIN********************/
+
+    public function getOneProfe(){
+        $profe= $this->db->query("SELECT * FROM usuario WHERE idUsuario={$this->getIdUsuario()}");
+        return $profe;
+        //return $profe->fetch_object();//Para visualizar datos en array
+    }
+
+    public function borrarProfesor(){
+        $borrar= $this->db->query("UPDATE usuario SET Activado =0 WHERE idUsuario={$this->getIdUsuario()}");
+        var_dump($borrar);
+        return $borrar;
+    }
+
+    public function editarProfesor(){
+        /******CONSULTA PARA EDITAR DATOS EN LA TABLA USUARIO********/
+        $editar= $this->db->query("UPDATE usuario SET 
+                   Nombres='{$this->getNombres()}',
+                   ApPaterno='{$this->getAppaterno()}',
+                   ApMaterno='{$this->getApmaterno()}', 
+                   Email='{$this->getEmail()}'             
+                   
+                    WHERE idUsuario={$this->getIdUsuario()}");
+
+        return $editar;
+
+
+
+
+    }
+
+
 }
 
 

@@ -17,7 +17,7 @@
                 </a>
 
 
-            <a href="#" class="btn btn-success btn-icon-split center" data-toggle="modal" data-target="#addProfesor">
+            <a class="btn btn-success btn-icon-split center" data-toggle="modal" data-target="#addProfesor">
                 <span class="icon text-white-50">
                     <i class="fas fa-user"></i>
                 </span>

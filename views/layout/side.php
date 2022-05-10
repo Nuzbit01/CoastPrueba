@@ -58,6 +58,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Bitacora</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="<?=base_url?>admin/profesores">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Profesores</span></a>
+    </li>
     <!--    FIN BOTONES DE ADMIN-->
 
     <!-- Divider -->

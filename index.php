@@ -139,7 +139,8 @@ if (!isset($_GET['controller']) && !isset($_GET['action'])) {
             </div>
             <div class="modal-body">
                 <!--BodyMODAL-->
-                <form method="post" action="<?=base_url?>admin/addProfesor" class="row g-3">
+                <form method="post" action="<?= base_url ?>admin/addProfesor" class="row g-3">
+                    <input type="hidden" name="tipo" value="2">
                     <div class="col-md-4">
                         <label for="nombre" class="form-label">Nombre(s):</label>
                         <input type="text" name="nombre" class="form-control" id="inputEmail4">

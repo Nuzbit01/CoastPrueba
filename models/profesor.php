@@ -77,4 +77,24 @@ class Profesor{
         }
         return $result;
     }
+
+    public function altaProfesor(){
+        $sql="INSERT INTO profesor VALUES (null,null,{$this->getFkUsuarioIdUsuario()})";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function getAll(){
+        $profesor= $this->db->query("SELECT idUsuario,Nombres, ApPaterno, ApMaterno,Email, Activado from usuario INNER JOIN profesor on idUsuario=fk_Usuario_idUsuario;");
+        return $profesor;
+    }
+
+
+
 }
