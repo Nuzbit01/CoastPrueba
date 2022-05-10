@@ -106,7 +106,7 @@ class AdminController
         }
     }*/
 
-
+/*****************METODOS PARA PROFESOR**********************************************/
     public function borrarProfesor(){
        // var_dump($_GET);
         $id=intval($_GET['id']);
